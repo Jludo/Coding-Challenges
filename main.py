@@ -44,5 +44,22 @@
 
 import random
 
-defined_number = int(input('Choose a number: '))
+def guesser_hints(low,high):
 
+  guessed_number = 0
+  attempts = 0
+  hint = ''
+
+  while (hint != 'c'):
+    guessed_number = random.randint(low,high)
+    attempts += 1
+    print(guessed_number)
+    hint = input(f'Is {guessed_number} too high (h), too low (l), or correct (c)?\n')
+    if hint == 'h':
+      high = guessed_number-1 # the tut suggested to just do high = high-1, so I'm pretty proud of coming up with this on my own.
+    elif hint == 'l':
+      low = guessed_number+1
+  
+  print(f'Attempts: {attempts}')
+
+guesser_hints(1,10)
